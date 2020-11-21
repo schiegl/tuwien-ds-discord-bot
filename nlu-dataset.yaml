@@ -73,10 +73,10 @@ utterances:
 type: intent
 name: anyone_solved
 utterances:
-  - Has anyone solved [assignment:assignment]?
-  - Did someone solve [assignment:assignment]?
-  - Did anybody solve [assignment:assignment]?
-  - Did anybody do [assignment:assignment]
-  - Who solved [assignment:assignment]?
-  - Is there someone who did [assignment:assignment]?
-  - Did you solve [assignment:assignment]?
+  - Has anyone solved [assignment:assignment](exercise)?
+  - Did someone solve [assignment:assignment](assignment)?
+  - Did anybody solve [assignment:assignment](task)?
+  - Did anybody do [assignment:assignment](task)
+  - Who solved [assignment:assignment](exercise)?
+  - Is there someone who did [assignment:assignment](assignment)?
+  - Did you solve [assignment:assignment](exercise)?
