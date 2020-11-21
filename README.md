@@ -1,6 +1,6 @@
 # TU Wien Data Science Discord Bot
 
-This is the repository for the bot of the TU Wien Data Science Discord server.
+This is the repository for the chat bot of the TU Wien Data Science Discord server.
 
 
 ## How it works?
@@ -24,16 +24,24 @@ chmod +x run.sh
 ```
 
 
-## Contribute
+## How to contribute?
 There are a few ways you can contribute
 
-### Add more expressions/responses (easy)
-In `nlu-dataset.yaml` you will find the type of phrases the bot will be able to detect (called intents) and respond to. You can add more examples for each intent by just adding another bullet point. This will make the bot respond to a wider variety of phrases.
+### Add more expressions/responses
+**Difficulty:** easy
+
+In `nlu-dataset.yaml` you will find the types of phrases the bot will be able to detect (called intents) and respond to. You can add more examples for each intent by just adding another bullet point. This will make the bot respond to a wider variety of phrases. Here is the [documentation](https://snips-nlu.readthedocs.io/en/latest/dataset.html) on the format of the file.
 
 You can also add more responses. The responses can be found inside the message handlers themselves.
 
-### Add/Improve message handlers and/or intents (medium)
+### Add/Improve message handlers and/or intents
+**Difficulty:** medium
+
 In the directory `handler/` you will find different types of message handlers or actions of the bot. Each of them will do different things and respond to different intents. For example `handlers/english_only.py` will respond to messages that are German and remind people to keep the chat English.
 
-### Extend/Improve architecture (hard)
-If you want to do something that the current architecture doesn't support, create an issue on how you would like to improve it. If the idea makes sense and you can pull it off, I'll accept pull requests.
+To create a new message handler inherit from the class `MessageHandler` in `handlers/handler.py`.
+
+### Extend/Improve architecture
+**Difficulty:** hard
+
+If you want to do something that the current architecture doesn't support, create an issue on how you would like to improve it before you write a lot of code.
