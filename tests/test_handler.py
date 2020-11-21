@@ -37,10 +37,10 @@ def test_respond_to_all_channels():
 
 
 def test_ignore_other_intents():
-    handler = EchoHandler(intents=[IntentName.tell_wise_quote, IntentName.play_among_us])
+    handler = EchoHandler(intents=[IntentName.ask_for_wise_quote, IntentName.play_among_us])
 
     message = create_message("hello", channel="a")
-    assert handler(message, Intent(name=IntentName.tell_wise_quote, probability=0.9)) == "hello"
+    assert handler(message, Intent(name=IntentName.ask_for_wise_quote, probability=0.9)) == "hello"
 
     message = create_message("hello", channel="a")
     assert handler(message, Intent(name=IntentName.play_among_us, probability=0.9)) == "hello"

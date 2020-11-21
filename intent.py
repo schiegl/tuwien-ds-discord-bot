@@ -10,7 +10,7 @@ class IntentName(Enum):
     play_among_us = "play_among_us"
     insult_bot = "insult_bot"
     thank_bot = "thank_bot"
-    tell_wise_quote = "tell_wise_quote"
+    ask_for_wise_quote = "ask_for_wise_quote"
     none = None
 
 

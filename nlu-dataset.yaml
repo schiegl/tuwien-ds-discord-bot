@@ -46,10 +46,10 @@ utterances:
   - thank you very much [name:self](bot)
 
 
-# tell wise quote
+# ask for wise quote
 ---
 type: intent
-name: tell_wise_quote
+name: ask_for_wise_quote
 utterances:
   - tell me something wise [name:self](bot)
   - tell me a story [name:self](bot)

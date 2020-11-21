@@ -14,7 +14,7 @@ class TellWiseQuote(MessageHandler):
     """
 
     def __init__(self):
-        super().__init__(channels=[], intent_names=[IntentName.tell_wise_quote])
+        super().__init__(channels=[], intent_names=[IntentName.ask_for_wise_quote])
 
         self.quotes = [
             {
