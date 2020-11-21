@@ -1,0 +1,59 @@
+# bot entity
+---
+type: entity # allows to differentiate between entities and intents files
+name: self # name of the entity
+matching_strictness: 0.8
+values:
+  - bot # single entity value
+  - [bot, BOT, robot, mr bot, botty] # entity value with a synonym
+
+
+# play among us
+---
+type: intent
+name: play_among_us
+utterances:
+  - among us at [date:snips/datetime](8)?
+  - Among us [date:snips/datetime](tomorrow)?
+  - Among us [date:snips/datetime](tonight)?
+  - Among us between [date:snips/datetime](8) and [date:snips/datetime](9)?
+  - anyone wanna play among us?
+  - who's up for Among Us?
+  - do you want to play among us [name:self](bot)?
+  - who wants to play among us?
+  - wanna play among us?
+
+
+# insult bot
+---
+type: intent
+name: insult_bot
+utterances:
+  - shut up [name:self](bot)
+  - go away [name:self](bot)!
+  - fuck off [name:self](bot)
+  - this bot sucks
+  - bad [name:self](bot)
+
+
+# thank bot
+---
+type: intent
+name: thank_bot
+utterances:
+  - thank you [name:self](bot)
+  - thanks [name:self](bot)!
+  - thank you very much [name:self](bot)
+
+
+# tell wise quote
+---
+type: intent
+name: tell_wise_quote
+utterances:
+  - tell me something wise [name:self](bot)
+  - tell me a story [name:self](bot)
+  - tell me a quote [name:self](bot)
+  - what do you think [name:self](bot)?
+  - can i get a quote [name:self](bot)?
+  - how about a quote [name:self](bot)?
