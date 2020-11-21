@@ -31,8 +31,10 @@ class CodeFormatReminder(MessageHandler):
 
     def handle(self, message: discord.Message, intent: Intent) -> Optional[str]:
         text = message.content
-        for _, regex in self.detectors.items():
-            if regex.search(text):
-                return "Did you know that you can **format code** in your messages? To format *inline* use `` ` ``, for *code blocks* use `` ``` `` and to *syntax highlight* add the language name e.g. `` ```python ``."
+
+        if "`" not in text:
+            for _, regex in self.detectors.items():
+                if regex.search(text):
+                    return "Did you know that you can **format code** in your messages? To format *inline* use `` ` ``, for *code blocks* use `` ``` `` and to *syntax highlight* add the language name e.g. `` ```python ``."
 
         return None
