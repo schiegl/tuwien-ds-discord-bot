@@ -1,1 +1,3 @@
-discord.py langdetect snips-nlu
+discord.py
+langdetect
+snips-nlu
