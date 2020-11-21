@@ -22,6 +22,8 @@ class PlayAmongUs(MessageHandler):
                     "Seems like the perfect time to play among us",
                     "Tell me more 🤔",
                     "I wish I could 😞",
+                    "Beanie gang 4 lyfe",
+                    "We won't take no for an answer!",
                 ]
             )
         else:
