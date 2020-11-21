@@ -2,6 +2,7 @@ from intent import Intent
 from typing import Optional
 import discord
 from langdetect import detect
+import random
 
 from handlers.handler import MessageHandler
 
@@ -18,7 +19,12 @@ class EnglishOnly(MessageHandler):
     def handle(self, message: discord.Message, intent: Intent) -> Optional[str]:
         text = message.content
         if len(text.split(" ")) >= 4 and detect(message.content) == "de":
-            return "Please keep the chat English 🙏"
+            return random.choice([
+                "Please keep the chat English 🙏",
+                "English please 🙏",
+                "Don't forget that not everyone speaks German on this server!",
+                "> Wish I'd speak German 🥺\n>  - *probably someone on this server*"
+            ])
         else:
             return None
 
