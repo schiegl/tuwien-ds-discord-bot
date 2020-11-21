@@ -13,6 +13,7 @@ from handlers.code_format import CodeFormatReminder
 from handlers.play_among_us import PlayAmongUs
 from handlers.wise_quote import TellWiseQuote
 from handlers.thank_insult_bot import ThankInsultBot
+from handlers.anyone_solved import AnyoneSolved
 from intent import Intent, IntentName
 
 
@@ -53,7 +54,14 @@ client = discord.Client(
 )
 
 # all the handlers that will be run for each message
-handlers: List[MessageHandler] = [EnglishOnly(), CodeFormatReminder(), ThankInsultBot(), PlayAmongUs(), TellWiseQuote()]
+handlers: List[MessageHandler] = [
+    EnglishOnly(),
+    CodeFormatReminder(),
+    ThankInsultBot(),
+    PlayAmongUs(),
+    AnyoneSolved(),
+    TellWiseQuote()
+]
 
 
 @client.event

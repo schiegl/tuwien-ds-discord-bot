@@ -11,6 +11,7 @@ class IntentName(Enum):
     insult_bot = "insult_bot"
     thank_bot = "thank_bot"
     ask_for_wise_quote = "ask_for_wise_quote"
+    anyone_solved = "anyone_solved"
     none = None
 
 

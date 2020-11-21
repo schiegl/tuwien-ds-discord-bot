@@ -4,8 +4,17 @@ type: entity # allows to differentiate between entities and intents files
 name: self # name of the entity
 matching_strictness: 0.8
 values:
-  - bot # single entity value
+  - bert # single entity value
   - [bot, BOT, robot, mr bot, botty] # entity value with a synonym
+
+
+# assignment entity
+---
+type: entity # allows to differentiate between entities and intents files
+name: assignment # name of the entity
+matching_strictness: 0.9
+values:
+  - [exercise, task, assignment, ex]
 
 
 # play among us
@@ -57,3 +66,17 @@ utterances:
   - what do you think [name:self](bot)?
   - can i get a quote [name:self](bot)?
   - how about a quote [name:self](bot)?
+
+
+# has anyone solved exercise
+---
+type: intent
+name: anyone_solved
+utterances:
+  - Has anyone solved [assignment:assignment]?
+  - Did someone solve [assignment:assignment]?
+  - Did anybody solve [assignment:assignment]?
+  - Did anybody do [assignment:assignment]
+  - Who solved [assignment:assignment]?
+  - Is there someone who did [assignment:assignment]?
+  - Did you solve [assignment:assignment]?
