@@ -19,7 +19,7 @@ class ThankInsultBot(MessageHandler):
             if intent.name == IntentName.thank_bot:
                 return random.choice(
                     [
-                        f"Why thank you {message.author.display_name} 😊",
+                        f"{message.author.mention} Why thank you 😊",
                         "😘",
                         "This is what life is all about",
                         "All the hard work I've put in has now come to fruition",

@@ -2,10 +2,11 @@
 ---
 type: entity # allows to differentiate between entities and intents files
 name: self # name of the entity
-matching_strictness: 0.8
+matching_strictness: 0.9
 values:
-  - bert # single entity value
-  - [bot, BOT, robot, mr bot, botty] # entity value with a synonym
+  - "bert" # single entity value
+  - "@bot"
+  - ["BOT", "robot", "mr bot"] # entity value with a synonym
 
 
 # assignment entity
@@ -14,7 +15,7 @@ type: entity # allows to differentiate between entities and intents files
 name: assignment # name of the entity
 matching_strictness: 0.9
 values:
-  - [exercise, task, assignment, ex]
+  - ["exercise", "task", "assignment", "ex"]
 
 
 # play among us
@@ -22,15 +23,16 @@ values:
 type: intent
 name: play_among_us
 utterances:
-  - among us at [date:snips/datetime](8)?
-  - Among us [date:snips/datetime](tomorrow)?
-  - Among us [date:snips/datetime](tonight)?
-  - Among us between [date:snips/datetime](8) and [date:snips/datetime](9)?
-  - anyone wanna play among us?
-  - who's up for Among Us?
-  - do you want to play among us [name:self](bot)?
-  - who wants to play among us?
-  - wanna play among us?
+  - "among us at [date:snips/datetime](8)?"
+  - "Among us [date:snips/datetime](tomorrow)?"
+  - "Among us [date:snips/datetime](tonight)?"
+  - "Among us between [date:snips/datetime](8) and [date:snips/datetime](9)?"
+  - "anyone wanna play among us?"
+  - "who's up for Among Us?"
+  - "[name:self](bot) do you want to play among us?"
+  - "[name:self](bot) wanna play among us?"
+  - "who wants to play among us?"
+  - "wanna play among us?"
 
 
 # insult bot
@@ -38,11 +40,14 @@ utterances:
 type: intent
 name: insult_bot
 utterances:
-  - shut up [name:self](bot)
-  - go away [name:self](bot)!
-  - fuck off [name:self](bot)
-  - this bot sucks
-  - bad [name:self](bot)
+  - "[name:self](bot) shut up"
+  - "shut up [name:self](bot)"
+  - "[name:self](bot) go away!"
+  - "this bot sucks"
+  - "bad bot"
+  - "[name:self](bot) u suck"
+  - "[name:self](bot) you suck"
+  - "[name:self](bot) you are bad"
 
 
 # thank bot
@@ -50,9 +55,12 @@ utterances:
 type: intent
 name: thank_bot
 utterances:
-  - thank you [name:self](bot)
-  - thanks [name:self](bot)!
-  - thank you very much [name:self](bot)
+  - "thank you [name:self](bot)"
+  - "[name:self](bot) thank you"
+  - "thanks [name:self](bot)!"
+  - "[name:self](bot) thanks"
+  - "thank you very much [name:self](bot)"
+  - "[name:self](bot) thank you very much"
 
 
 # ask for wise quote
@@ -60,12 +68,13 @@ utterances:
 type: intent
 name: ask_for_wise_quote
 utterances:
-  - tell me something wise [name:self](bot)
-  - tell me a story [name:self](bot)
-  - tell me a quote [name:self](bot)
-  - what do you think [name:self](bot)?
-  - can i get a quote [name:self](bot)?
-  - how about a quote [name:self](bot)?
+  - "[name:self](bot) talk to me buddy"
+  - "[name:self](bot) say something"
+  - "[name:self](bot) tell me a quote"
+  - "[name:self](bot) what do you think?"
+  - "[name:self](bot) tell me something?"
+  - "[name:self](bot) can i get a quote"
+  - "[name:self](bot) how about a quote"
 
 
 # has anyone solved exercise
@@ -73,10 +82,10 @@ utterances:
 type: intent
 name: anyone_solved
 utterances:
-  - Has anyone solved [assignment:assignment](exercise)?
-  - Did someone solve [assignment:assignment](assignment)?
-  - Did anybody solve [assignment:assignment](task)?
-  - Did anybody do [assignment:assignment](task)
-  - Who solved [assignment:assignment](exercise)?
-  - Is there someone who did [assignment:assignment](assignment)?
-  - Did you solve [assignment:assignment](exercise)?
+  - "Has anyone solved [assignment:assignment](exercise) [num:snips/number](2)?"
+  - "Did someone solve [assignment:assignment](assignment) [num:snips/number](1)?"
+  - "Did anybody solve [assignment:assignment](task) [num:snips/number](3)?"
+  - "Did anybody do the [assignment:assignment](task)"
+  - "Who solved [assignment:assignment](exercise) [num:snips/number](5)?"
+  - "Is there someone who did [assignment:assignment](assignment) [num:snips/number](4)?"
+  - "Did you solve the [assignment:assignment](exercise)?"

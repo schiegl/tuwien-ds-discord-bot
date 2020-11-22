@@ -7,4 +7,4 @@ snips-nlu download en
 snips-nlu generate-dataset en nlu-dataset.yaml > /tmp/nlu-dataset.json 
 
 # run bot
-python main.py $DISCORD_API_TOKEN --nlu-dataset /tmp/nlu-dataset.json --logfile bot.log
+python main.py $DISCORD_API_TOKEN --nlu-dataset /tmp/nlu-dataset.json

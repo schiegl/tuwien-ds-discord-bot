@@ -6,6 +6,8 @@ from snips_nlu import SnipsNLUEngine
 from snips_nlu.default_configs import CONFIG_EN
 import discord
 import logging
+import sys
+import re
 
 from handlers.handler import MessageHandler
 from handlers.english_only import EnglishOnly
@@ -20,16 +22,19 @@ from intent import Intent, IntentName
 argparser = ArgumentParser(description="Run the Discord bot")
 argparser.add_argument("discord_api_token", help="API Token for Discord bot")
 argparser.add_argument("--nlu-dataset", help="Path to json dataset to learn from")
-argparser.add_argument("--logfile", help="Path to logfile")
+argparser.add_argument("--debug", help="Whether to log everything", action="store_true")
 args = argparser.parse_args()
 
 
-def get_logger(logfile_path: str, level=logging.DEBUG) -> logging.Logger:
+def get_logger() -> logging.Logger:
     logger = logging.getLogger("discord")
-    logger.setLevel(level)
-    handler = logging.FileHandler(filename=logfile_path, encoding="utf-8", mode="w")
-    handler.setFormatter(logging.Formatter("%(asctime)s:%(levelname)s:%(name)s: %(message)s"))
+    log_format = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s: %(message)s")
+
+    logger.setLevel(logging.DEBUG if args.debug else logging.INFO)
+    handler = logging.StreamHandler(sys.stdout)
+    handler.setFormatter(log_format)
     logger.addHandler(handler)
+
     return logger
 
 
@@ -43,7 +48,7 @@ def get_nlu_engine(dataset_json_path: str) -> SnipsNLUEngine:
 
 
 snips = get_nlu_engine(args.nlu_dataset)
-logger = get_logger(args.logfile)
+logger = get_logger()
 
 client = discord.Client(
     intents=discord.Intents(
@@ -60,15 +65,15 @@ handlers: List[MessageHandler] = [
     ThankInsultBot(),
     PlayAmongUs(),
     AnyoneSolved(),
-    TellWiseQuote()
+    TellWiseQuote(),
 ]
 
 
 @client.event
 async def on_ready():
-    logger.debug("Connected guilds")
+    logger.info("Connected guilds")
     for guild in client.guilds:
-        logger.debug(f" - {guild.id} (name: {guild.name})")
+        logger.info(f" - {guild.id} (name: {guild.name})")
 
 
 @client.event
@@ -87,7 +92,9 @@ async def on_message(message: discord.Message):
     if message.author.bot:
         return
 
-    result = snips.parse(message.content)
+    # replace mentions with something snips can recognize
+    clean_text = message.content.replace(f"<@!{client.user.id}>", "@bot")
+    result = snips.parse(clean_text)
     intent_name = IntentName(result["intent"]["intentName"])
     intent = Intent(name=intent_name, probability=result["intent"]["probability"])
 

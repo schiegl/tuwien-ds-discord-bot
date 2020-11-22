@@ -16,16 +16,17 @@ class AnyoneSolved(MessageHandler):
 
     def handle(self, message: discord.Message, intent: Intent) -> Optional[str]:
         if intent.probability > 0.9:
-            return random.sample([
-                "Yes, I wish could tell you...",
-                "Probably",
-                "Likely so",
-                "Yes",
-                "You're on your own buddy",
-                "Have you ever solved an exercise by yourself? 🤔",
-                "Yes, EZ",
-                "Always the same people 😒",
-            ])
-
+            return random.choice(
+                [
+                    "Yes, I wish could tell you...",
+                    "Probably",
+                    "Likely so",
+                    "Yes",
+                    "You're on your own buddy",
+                    "Have you ever solved an exercise by yourself? 🤔",
+                    "Yes, EZ",
+                    "Always the same people 😒",
+                ]
+            )
 
         return None
